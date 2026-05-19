@@ -29,7 +29,13 @@ function Projects() {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-45%"]);
+  const isMobile = window.innerWidth <= 768;
+
+const x = useTransform(
+  scrollYProgress,
+  [0, 1],
+  isMobile ? ["0%", "0%"] : ["0%", "-45%"]
+);
 
   return (
     <section id="projects" className="projects horizontal-section" ref={targetRef}>

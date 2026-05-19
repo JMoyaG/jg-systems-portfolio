@@ -27,6 +27,7 @@ function App() {
   <Marquee />
   <Services />
   <Projects />
+  <Experience />
   <Gallery />
   <TechStack />
   <Contact />

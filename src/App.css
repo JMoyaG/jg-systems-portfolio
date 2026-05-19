@@ -1493,6 +1493,40 @@ body {
     height: 460px;
   }
 }
+@media (max-width: 768px) {
+
+  .horizontal-section {
+    height: auto !important;
+    overflow: hidden;
+    padding-bottom: 120px;
+  }
+
+  .horizontal-sticky {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block;
+  }
+
+  .horizontal-track {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    transform: none !important;
+    gap: 40px;
+    padding: 0 24px;
+  }
+
+  .horizontal-card {
+    width: 100% !important;
+    height: 420px !important;
+    min-height: 420px;
+  }
+
+  .project-card {
+    background-position: center;
+  }
+}
 /* CINEMATIC TEXT */
 
 .hero-title {
