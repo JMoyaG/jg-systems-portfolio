@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import TiltCard from "./TiltCard";
+import Reveal from "./Reveal";
+
 const projects = [
   {
     title: "Sistema Alisto",
@@ -23,42 +23,35 @@ const projects = [
 ];
 
 function Projects() {
-  const targetRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const isMobile = window.innerWidth <= 768;
-
-const x = useTransform(
-  scrollYProgress,
-  [0, 1],
-  isMobile ? ["0%", "0%"] : ["0%", "-45%"]
-);
-
   return (
-    <section id="projects" className="projects horizontal-section" ref={targetRef}>
+    <section id="projects" className="projects">
       <div className="container">
-        <p className="section-tag">PROYECTOS</p>
-        <h2 className="title">Experiencias digitales modernas y funcionales.</h2>
-      </div>
 
-      <div className="horizontal-sticky">
-        <motion.div className="horizontal-track" style={{ x }}>
+        <Reveal>
+          <p className="section-tag">PROYECTOS</p>
+
+          <h2 className="title">
+            Experiencias digitales modernas y funcionales.
+          </h2>
+        </Reveal>
+
+        <div className="projects-grid">
           {projects.map((project, index) => (
-            <TiltCard
-  className="project-card horizontal-card tilt-card"
-  key={index}
-  style={{ backgroundImage: `url(${project.image})` }}
->
-  <div className="project-overlay">
-    <p>{project.category}</p>
-    <h3>{project.title}</h3>
-  </div>
-</TiltCard>
+            <Reveal delay={index * 0.12} key={index}>
+              <TiltCard
+                className="project-card premium-project"
+                style={{
+                  backgroundImage: `url(${project.image})`,
+                }}
+              >
+                <div className="project-overlay">
+                  <p>{project.category}</p>
+                  <h3>{project.title}</h3>
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
